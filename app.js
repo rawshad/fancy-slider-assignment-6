@@ -24,14 +24,16 @@ const getImages = (query) => {
 
 // show images 
 const showImages = (images) => {
+    console.log(images);
     imagesArea.style.display = 'block';
     gallery.innerHTML = '';
     // show gallery title
     galleryHeader.style.display = 'flex';
     images.forEach(image => {
       let div = document.createElement('div');
-      div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-      div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+      div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2 text-center text-uppercase fw-bolder';
+      div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
+                        <p>${image.user}</p>`;
       gallery.appendChild(div);
       toggleSpinner(false);
     })

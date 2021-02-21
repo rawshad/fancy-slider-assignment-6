@@ -21,6 +21,7 @@ const getImages = (query) => {
     .catch(err => console.log(err))
 }
 
+
 // show images 
 const showImages = (images) => {
     imagesArea.style.display = 'block';
@@ -71,7 +72,9 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  const duration = document.getElementById('duration').value & document.getElementById('duration').value > 0 || 1000;
+  
+  
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -80,6 +83,7 @@ const createSlider = () => {
     alt="">`;
     sliderContainer.appendChild(item)
   })
+  
   changeSlide(0)
   timer = setInterval(function () {
     slideIndex++;
@@ -138,3 +142,10 @@ const toggleSpinner = (show) => {
     replaceImage.classList.add('d-flex');
   }
 }
+
+// add keypress event handler
+document.getElementById('search').addEventListener("keypress", function(event) {
+  if (event.key === 'Enter') {
+    document.getElementById('search-btn').click();
+  }
+});

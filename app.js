@@ -42,10 +42,13 @@ const selectItem = (event, img) => {
   element.classList.add('added');
  
   let item = sliders.indexOf(img);
+  console.log(item);
   if (item === -1) {
     sliders.push(img);
   } else {
-    alert('Hey, Already added !')
+    // alert('Hey, Already added !')
+    sliders.pop(img);
+    element.classList.remove('added');
   }
 }
 var timer
@@ -68,7 +71,7 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value>0 || 1000;
+  const duration = document.getElementById('duration').value || 1000;
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -124,12 +127,14 @@ sliderBtn.addEventListener('click', function () {
 
 const toggleSpinner = (show) => {
   const spinner = document.getElementById("loading-spinner");
-  // const spinner = document.getElementById("image-container");
+  const replaceImage = document.getElementById('image-container')
   if (show) {
     spinner.classList.remove('d-none');
     spinner.classList.add('d-flex');
+    replaceImage.classList.remove('d-none');
   } else {
     spinner.classList.remove('d-flex');
     spinner.classList.add('d-none');
+    replaceImage.classList.add('d-flex');
   }
 }

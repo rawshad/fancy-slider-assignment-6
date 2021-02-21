@@ -151,3 +151,13 @@ document.getElementById('search').addEventListener("keypress", function(event) {
     document.getElementById('search-btn').click();
   }
 });
+
+document.getElementById('duration').addEventListener("keypress", function(event2) {
+  if (event2.key === 'Enter') {
+    document.getElementById('create-slider').click();
+  }
+});
+
+//Two extra feature added
+// 1. Showing User name under the image box each
+// 2. keypress event added to the time duration box and create slider button
